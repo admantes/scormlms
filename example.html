@@ -1,0 +1,103 @@
+<html>
+
+<head>
+<title> MY SCORM COMPLIANT LMS </title>
+
+<script src="apm_scormlms.js" type="text/javascript"></script>
+<script>
+
+	var theJSON = {"cmi.core._children": "student_id, student_name, lesson_location, credit, lesson_status, entry, score, total_time, lesson_mode, exit, session_time" ,
+						"cmi.core.student_id": "0000000-0000-0000-0000-00000000000" ,
+						"cmi.core.student_name": "Anderson, Neox" ,
+						"cmi.core.lesson_location": "" ,
+						"cmi.core.credit": "" ,
+						"cmi.core.lesson_status": "failed" ,
+						"cmi.core.entry": "" ,
+						"cmi.core.score_children": "cmi.core.score.raw, cmi.core.score.max, cmi.core.score.min" ,
+						"cmi.core.score.raw": "" ,
+						"cmi.core.score.max": "" ,
+						"cmi.core.score.min": "" ,
+						"cmi.core.total_time": "" ,
+						"cmi.core.lesson_mode": "" ,
+						"cmi.core.exit": "" ,
+						"cmi.core.session_time": "" ,
+						"cmi.student_data.mastery_score": "" ,
+						"cmi.launch_data": "" ,
+						"cmi.suspend_data": "" 
+			};
+			
+var API = new SCORMLMS(theJSON);
+
+//Set Callback Function to Listen for Activities from SCO and perform your custom functions (like saving to DB etc...)
+API.setCallBack(GetRequestsFromSCO); 
+///// GLOBAL VARIABLES
+var courseLaunchPage = "RuntimeBasicCalls_SCORM12/shared/launchpage.html";
+ var courseLaunchPage = "flash/main.html";
+  var courseLaunchPage = "petroed/res/index.html";
+  var courseLaunchPage =  "cbttester/main.html";
+   var courseLaunchPage =  "flash/lng/m1/main.html";
+      var courseLaunchPage =  "cbt3/content/main.html";
+//-------------------------------------------------//
+
+
+
+
+
+
+function GetRequestsFromSCO(type, elem, val){
+	 
+	console.log("from callback: " + type + " - " + elem  + " - " + val);
+	
+	switch(type){
+		
+		case "INIT":
+		
+			break;
+			
+		case "GETDATA":
+			//Do Something when SCO asks for data
+			
+			break;
+
+		case "SETDATA":
+		
+			break;
+
+		case "FINISH":
+		
+			break;	
+		
+		default:
+		break;
+	}
+}
+
+ 
+function launchCBT(){
+	 
+	var url = courseLaunchPage; 
+	openInNewWindow(url);
+}
+
+function openInNewWindow(url){
+	 newwindow=window.open(url,"scormcbtwindow",'height=768,width=1024');
+       if (window.focus) {newwindow.focus()}
+       return false;
+	
+}
+
+</script>
+
+
+</head>
+
+
+
+<body> 
+
+  <input type="button" value="Launch Module" id="butExit" onclick="launchCBT();"/>
+  
+  
+  </body>
+  
+  </html>
