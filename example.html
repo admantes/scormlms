@@ -30,13 +30,9 @@ var API = new SCORMLMS(theJSON);
 
 //Set Callback Function to Listen for Activities from SCO and perform your custom functions (like saving to DB etc...)
 API.setCallBack(GetRequestsFromSCO); 
-///// GLOBAL VARIABLES
-var courseLaunchPage = "RuntimeBasicCalls_SCORM12/shared/launchpage.html";
- var courseLaunchPage = "flash/main.html";
-  var courseLaunchPage = "petroed/res/index.html";
-  var courseLaunchPage =  "cbttester/main.html";
-   var courseLaunchPage =  "flash/lng/m1/main.html";
-      var courseLaunchPage =  "cbt3/content/main.html";
+
+
+var courseLaunchPage =  "main.html";
 //-------------------------------------------------//
 
 
@@ -73,7 +69,7 @@ function GetRequestsFromSCO(type, elem, val){
 }
 
  
-function launchCBT(){
+function launchModule(){
 	 
 	var url = courseLaunchPage; 
 	openInNewWindow(url);
@@ -82,8 +78,7 @@ function launchCBT(){
 function openInNewWindow(url){
 	 newwindow=window.open(url,"scormcbtwindow",'height=768,width=1024');
        if (window.focus) {newwindow.focus()}
-       return false;
-	
+       return false;	
 }
 
 </script>
@@ -95,7 +90,7 @@ function openInNewWindow(url){
 
 <body> 
 
-  <input type="button" value="Launch Module" id="butExit" onclick="launchCBT();"/>
+  <input type="button" value="Launch Module" id="butExit" onclick="launchModule()"/>
   
   
   </body>
